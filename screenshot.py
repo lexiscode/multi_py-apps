@@ -1,5 +1,9 @@
 # Installed PyAutoGUI and Pillow packages 
 
+# https://pyautogui.readthedocs.io/en/latest/quickstart.html
+# https://www.geeksforgeeks.org/python-time-module/
+# https://www.geeksforgeeks.org/python-gui-tkinter/
+
 import time
 import pyautogui
 
@@ -28,3 +32,45 @@ def screenshot():
     time.sleep(5)
     img = pyautogui.screenshot(name)
     img.show()
+
+    
+    
+###USING PYTHON GUI - TKINTER###
+
+#import time
+import pyautogui
+import random
+import tkinter as tk
+
+def screenshot():
+    # name = int(round(time.time() * 1000))
+    name = random.randint(1, 101)
+    name = f"C:/Users/nwoko/PycharmProjects/myfirstproject/screenshots/{name}.png"
+    # time.sleep(5), we can use our GUI to make it run ASAP whenever we click the button
+    img = pyautogui.screenshot(name)
+    img.show()
+
+# screenshot(), we don't need to call the function here, since its already called in our GUI below
+
+root = tk.Tk()
+frame = tk.Frame(root)
+frame.pack()
+
+# creating buttons inside the frame, its label and its action/command which is the screenshot()
+# screenshot action button
+button = tk.Button(
+    frame,
+    text="Take Screenshot",
+    command=screenshot
+)
+button.pack(side=tk.LEFT)
+# close screenshot app button
+close = tk.Button(
+    frame,
+    text="Quit",
+    command=quit
+)
+close.pack(side=tk.LEFT)
+
+# runs the GUI
+root.mainloop()
